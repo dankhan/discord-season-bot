@@ -1,13 +1,16 @@
 # Discord Season Bot
 
 This bot will display the current season in the bot activity presence:
+
 ![Activity](/docs/assets/activity.png?raw=true "Activity")
 
 It will update the season category name to represent the current season number.
 And it will update a channel name to show a countdown timer (both in days, and in hours when < 2 days)
+
 ![Channels](/docs/assets/channels.png?raw=true "Channels")
 
 It adds a set of [season] [subcommand] slash commands to the server, and handles the requests.
+
 ![Messages](/docs/assets/messages.png?raw=true "Messages")
 
 ## Configuration
