@@ -28,7 +28,8 @@ Done in two configuration files on the server:
 	"daysRemainingChannelId": "<your-channel-id>",  // the channel id in discord your server for the season countdown timer
 	"token": "<your-discord-token>",                // the bot's secret access token
 	"ephemeral": false,                             // whether messages are visible channel-wide or jut by the individual
-	"commandName": "season"                         // the top-level slash command this bot uses
+	"commandName": "season",                        // the top-level slash command this bot uses
+	"updateInterval": "300000"                      // how many ms does the countdown timer refresh the channel name (note: discord rate limited)
 }
 ```
 

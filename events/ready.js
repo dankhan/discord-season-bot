@@ -11,7 +11,7 @@
  */
 
 // Get the season config file name so we can write back changes
-const { seasonCategoryId, daysRemainingChannelId } = require('../config.json');
+const { seasonCategoryId, daysRemainingChannelId, updateInterval } = require('../config.json');
 
 // Current timestamp
 const { getCurrentTimestamp, daysDiff } = require ('../includes/utils.js');
@@ -25,8 +25,7 @@ let ts = getCurrentTimestamp();
 // Allow access to filesystem to reload config file
 const fs = require('fs');
 
-// Track last number of days and hours so we know when to update channel name
-let lastNumDays = '';
+// Track last number of hours so we know when to update channel name
 let lastNumHours = '';
 
 // Function to read season config from file and update channel name
@@ -40,7 +39,7 @@ const updateChannelName = async () => {
 		const { numDays, numHours } = daysDiff(new Date(), seasonConfig.seasonEndDate);
 
 		// Only update the channel name if it's changed
-		if (numDays !== lastNumDays || (numDays <=1 && numHours !== lastNumHours)) {
+		if (numHours !== lastNumHours) {
 
 			// Get current timestamp
 			let ts = getCurrentTimestamp();
@@ -58,7 +57,6 @@ const updateChannelName = async () => {
 			}
 
 			// Set the last updated values
-			lastNumDays = numDays;
 			lastNumHours = numHours;
 		}
 	}
@@ -85,6 +83,6 @@ module.exports = {
 		
 		// Setup an interval to update the channel name
 		updateChannelName();
-		setInterval(updateChannelName, 1000 * 60);
+		setInterval(updateChannelName, updateInterval);
 	},
 };
