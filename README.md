@@ -9,7 +9,7 @@ And it will update a channel name to show a countdown timer (both in days, and i
 
 ![Channels](/docs/assets/channels.png?raw=true "Channels")
 
-It adds a set of [season] [subcommand] slash commands to the server, and handles the requests.
+It adds a set of `[season] [subcommand]` slash commands to the server, and handles the requests.
 
 ![Messages](/docs/assets/messages.png?raw=true "Messages")
 
