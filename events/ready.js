@@ -51,7 +51,7 @@ const updateChannelName = async () => {
 			} else if (numDays < 2) {
 				channel.setName(`📅｜${numHours} hours left...`);
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numHours} hours left...'`);
-			} else if (numWeeks > 2) {
+			} else if (numWeeks > 3) {
 				channel.setName(`📅｜${numWeeks} weeks left...`);
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numWeeks} weeks left...'`);
 			} else {
