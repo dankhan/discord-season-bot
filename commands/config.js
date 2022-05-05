@@ -32,9 +32,9 @@ module.exports = {
         console.log("\x1b[0m");
 
         // Get the number of days remaining
-        const { numDays, numHours } = daysDiff(new Date(), interaction.client.seasonConfig.seasonEndDate);
+        const { numDays, numHours, numWeeks } = daysDiff(new Date(), interaction.client.seasonConfig.seasonEndDate);
 
         // Reply in server
-        await interaction.reply({ content: "Current season config:\n```Season = "+interaction.client.seasonConfig.season+"\nSeason End Date = "+interaction.client.seasonConfig.seasonEndDate+"\nDays until season end = "+numDays+"\nHours until season end = "+numHours+"```", ephemeral } );
+        await interaction.reply({ content: "Current season config:\n```Season = "+interaction.client.seasonConfig.season+"\nSeason End Date = "+interaction.client.seasonConfig.seasonEndDate+"\nWeeks until season end = "+numWeeks+"\nDays until season end = "+numDays+"\nHours until season end = "+numHours+"```", ephemeral } );
     },
 };

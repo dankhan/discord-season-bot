@@ -36,7 +36,7 @@ const updateChannelName = async () => {
 
 	// Calculate the number of days remaining in the season
 	if (seasonConfig.seasonEndDate && channel) {
-		const { numDays, numHours } = daysDiff(new Date(), seasonConfig.seasonEndDate);
+		const { numDays, numHours, numWeeks } = daysDiff(new Date(), seasonConfig.seasonEndDate);
 
 		// Only update the channel name if it's changed
 		if (numHours !== lastNumHours) {
@@ -51,6 +51,9 @@ const updateChannelName = async () => {
 			} else if (numDays < 2) {
 				channel.setName(`📅｜${numHours} hours left...`);
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numHours} hours left...'`);
+			} else if (numWeeks > 2) {
+				channel.setName(`📅｜${numWeeks} weeks left...`);
+				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numWeeks} weeks left...'`);
 			} else {
 				channel.setName(`📅｜${numDays} days left...`);
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numDays} days left...'`);

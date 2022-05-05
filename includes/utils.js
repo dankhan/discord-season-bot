@@ -27,18 +27,25 @@ const daysDiff = (start, end) => {
     // convert ms to hours
     const oneHour = oneDay / 24;
 
+    // convert ms to weeks
+    const oneWeek = oneDay * 7;
+
     // Calculating the time difference between two dates
     const diffInTime = date2.getTime() - date1.getTime();
 
-    // Calculating the no. of days between two dates
-    const diffInDays = Math.round(diffInTime / oneDay);
+    // Convert to days
+    const diffInDays = Math.floor(diffInTime / oneDay);
 
-    // Calculating the no. of hours between two dates
-    const diffInHours = Math.round(diffInTime / oneHour)
+    // Convert to hours
+    const diffInHours = Math.floor(diffInTime / oneHour);
+
+    // Convert to weeks
+    const diffInWeeks = Math.floor(diffInTime / oneWeek);
 
     return {
         numDays: diffInDays,
         numHours: diffInHours,
+        numWeeks: diffInWeeks,
         numMs: diffInTime
     };
 }
