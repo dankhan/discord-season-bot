@@ -66,18 +66,19 @@ module.exports = {
 		    const channel = await interaction.client.channels.cache.get(daysRemainingChannelId);
         
             // Update the new days remaining message
-            const { numDays, numHours } = daysDiff(new Date(), interaction.client.seasonConfig.seasonEndDate);
+            const { numDays, numHours, numWeeks } = daysDiff(new Date(), interaction.client.seasonConfig.seasonEndDate);
 
-		    // Only update the channel name if it's changed
-		    ts = getCurrentTimestamp();
-
-            // Update the channel name
-            if (numDays < 0) {
+		    // Update the channel name
+            ts = getCurrentTimestamp();
+			if (numDays < 0) {
 				channel.setName('📅｜Season finished');
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to 'Season finished'`);
 			} else if (numDays < 2) {
 				channel.setName(`📅｜${numHours} hours left...`);
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numHours} hours left...'`);
+			} else if (numWeeks > 3) {
+				channel.setName(`📅｜${numWeeks} weeks left...`);
+				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numWeeks} weeks left...'`);
 			} else {
 				channel.setName(`📅｜${numDays} days left...`);
 				console.log("\x1b[33m", `[${ts}] [interval] Updated daysRemaining channel name to '${numDays} days left...'`);
