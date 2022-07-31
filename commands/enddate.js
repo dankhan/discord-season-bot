@@ -26,11 +26,11 @@ const fs = require('fs');
 module.exports = {
 	data: new SlashCommandSubcommandBuilder()
         .setName('enddate')
-        .setDescription('Sets a new season end date (mm/dd/yy) in the server')
+        .setDescription('Sets a new season end date (mm/dd/yyyy) in the server')
         .addStringOption(option => 
             option
                 .setName('date')
-                .setDescription('The new season end date (mm/yy/dd)')
+                .setDescription('The new season end date (mm/dd/yyyy)')
                 .setRequired(true)),
     async execute(interaction) {
         
@@ -43,7 +43,7 @@ module.exports = {
         // Check valid date format for new date
         const dt = new Date(seasonEndDate);
         if (null === seasonEndDate.match(/^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/) || isNaN(dt.valueOf())) {
-            await interaction.reply({ content: 'Invalid date format, please enter a date in (mm/dd/yy) format', ephemeral } );
+            await interaction.reply({ content: 'Invalid date format, please enter a date in (mm/dd/yyyy) format', ephemeral } );
             return;
         }
 
